@@ -10,21 +10,25 @@ export const navbarLinks = [
     {
         id: 0,
         name: "Home",
+        title: "home",
         href: "/"
     },
     {
         id: 1,
         name: "Templates",
+        title: "template",
         href: "/#"
     },
     {
         id: 2,
         name: "UI Kits",
+        title: "uikit",
         href: "/#"
     },
     {
         id: 3,
-        name: "Icons",
+        name: "Icon",
+        title: "icon",
         href: "/#"
     },
 ]

@@ -18,12 +18,12 @@ function MobileMenu({}: Props) {
   return (
     <Sheet>
         <SheetTrigger>
-            <Button variant={"outline"} size={"icon"} asChild>
-                <Menu className='h-4 w-4' />
+            <Button className='h-8 w-8 ml-2 border-none' variant={"outline"} size={"icon"} asChild>
+                <Menu  />
             </Button>
         </SheetTrigger>
         <SheetContent>
-            <div className="mt-5 flex flex-col px-2 ">
+            <div className="mt-5 flex flex-col gap-2 px-2 ">
                 {
                 navbarLinks.map((item) => (
                         <Link key={item.href} href={item.href} className={cn(
