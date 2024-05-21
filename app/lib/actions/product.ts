@@ -21,8 +21,7 @@ export async function SellProduct(prevState: any, formData: FormData){
     
     const {getUser} = getKindeServerSession();
     const user = await getUser();
-    
-    console.log({user})
+
 
     if(!user) {
         return redirect("/")
@@ -44,7 +43,6 @@ export async function SellProduct(prevState: any, formData: FormData){
             errors: validateFields.error.flatten().fieldErrors,
             message: "Oops! There is an error with your inputs",
         }
-        // throw new Error(validateFields?.error.message)
         return state;
     }
 
@@ -110,7 +108,7 @@ export async function BuyProduct(formData: FormData) {
         return redirect("/");
     }
 
-    console.log({data})
+
 
     const session = await stripe.checkout.sessions.create({
         mode: "payment",
@@ -137,8 +135,8 @@ export async function BuyProduct(formData: FormData) {
                 destination: data.User?.connectedAccountId as string,
             }
         },
-        success_url: `http://localhost:3000/payment/success`,
-        cancel_url: `http://localhost:3000/payment/cancel`
+        success_url: `${appConstants.APP_BASE_URL}/payment/success`,
+        cancel_url: `${appConstants.APP_BASE_URL}/payment/cancel`
     });
 
     return redirect(session.url as string);
