@@ -4,6 +4,8 @@ import prismadb from '@/app/lib/prismadb';
 import { CategoryTypes } from '@prisma/client';
 import { redirect } from 'next/navigation';
 import React from 'react'
+import { unstable_noStore as noStore } from "next/cache";
+
 
 type Props = {
     params: {
@@ -12,7 +14,7 @@ type Props = {
 }
 
 async function getData(category: string) {
-   
+   noStore()
     let input: string | undefined;
 
     switch(category) {

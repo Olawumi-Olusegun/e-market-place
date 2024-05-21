@@ -4,8 +4,11 @@ import SellForm from '../components/forms/SellForm';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { redirect } from 'next/navigation';
 import prismadb from '../lib/prismadb';
+import { unstable_noStore as noStore } from "next/cache";
+
 
 async function getData(userId: string) {
+  noStore();
   const data = await prismadb.user.findUnique({
     where: {
       id: userId

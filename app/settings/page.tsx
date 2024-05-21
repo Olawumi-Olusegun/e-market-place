@@ -5,10 +5,12 @@ import { redirect } from 'next/navigation';
 import React from 'react'
 import prismadb from '../lib/prismadb';
 import SettingsForm from '../components/forms/SettingsForm';
+import { unstable_noStore as noStore } from "next/cache";
 
 type Props = {}
 
 async function getData(userId: string) {
+    noStore()
     const data = await prismadb.user.findUnique({
         where: {
             id: userId

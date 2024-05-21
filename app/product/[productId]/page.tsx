@@ -8,6 +8,8 @@ import { JSONContent } from '@tiptap/react';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import React from 'react'
+import { unstable_noStore as noStore } from "next/cache";
+
 
 type Props = {
     params: {
@@ -16,6 +18,7 @@ type Props = {
 }
 
 async function getData(productId: string) {
+    noStore();
     const data = await prismadb.product.findUnique({
         where: {
             id: productId

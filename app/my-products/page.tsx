@@ -4,10 +4,11 @@ import { redirect } from 'next/navigation';
 import React from 'react'
 import prismadb from '../lib/prismadb';
 import ProductCard from '../components/ProductCard';
-
+import { unstable_noStore as noStore } from "next/cache";
 type Props = {}
 
 async function getData(userId: string) {
+    noStore()
     const data = await prismadb.product.findMany({
         where: {
             userId

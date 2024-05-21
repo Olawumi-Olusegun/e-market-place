@@ -1,10 +1,16 @@
+import appConstants from "@/app/lib/constants";
 import prismadb from "@/app/lib/prismadb";
 import { stripe } from "@/app/lib/stripe";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 
+import { unstable_noStore as noStore } from "next/cache";
+
+
 export async function GET(request: Request){
+
+    noStore()
 
     const {getUser} = getKindeServerSession();
 
@@ -12,7 +18,7 @@ export async function GET(request: Request){
         const user = await getUser();
 
         if(!user || user === null || !user.id) {
-            throw new Error("Something went wrong")
+            return redirect("/")
         }
 
         const dbUser = await prismadb.user.findUnique({
@@ -50,9 +56,9 @@ export async function GET(request: Request){
             });
         }
 
-        return NextResponse.redirect("http://localhost:3000");
+        return NextResponse.redirect(appConstants.APP_BASE_URL);
 
     } catch (error) {
-        throw new Error("Something went wrong")
+        return redirect("/")
     }
 }

@@ -6,10 +6,13 @@ import React from 'react'
 import prismadb from '../lib/prismadb';
 import { CreateStripeAccountLink, GetStripeDashboard } from '../lib/actions/product';
 import SubmitButton from '../components/SubmitButton';
+import { unstable_noStore as noStore } from "next/cache";
+
 
 type Props = {}
 
 async function getData(userId: string) {
+    noStore();
     const data = await prismadb.user.findUnique({
         where: {
             id: userId
