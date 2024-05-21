@@ -4,7 +4,7 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { redirect } from 'next/navigation';
 import React from 'react'
 import prismadb from '../lib/prismadb';
-import SettingsForm from '../components/SettingsForm';
+import SettingsForm from '../components/forms/SettingsForm';
 
 type Props = {}
 

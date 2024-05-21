@@ -1,4 +1,5 @@
 import prismadb from "@/app/lib/prismadb";
+import { stripe } from "@/app/lib/stripe";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
@@ -21,6 +22,22 @@ export async function GET(request: Request){
         });
 
         if(!dbUser) {
+
+            const account = await stripe.accounts.create({
+                email: user.email as string,
+                controller: {
+                    losses: {
+                        payments: "application",
+                    },
+                    fees: {
+                        payer: "application",
+                    },
+                    stripe_dashboard: {
+                        type: "express"
+                    }
+                }
+            });
+
             const dbUser = await prismadb.user.create({
                 data: {
                     id: user.id,
@@ -28,6 +45,7 @@ export async function GET(request: Request){
                     lastName: user.family_name ?? "not-specified",
                     email: user.email ?? "not-specified",
                     profileImage: user.picture ?? `https://avatar.vercel.sh/${user.given_name}`,
+                    connectedAccountId: account.id,
                 }
             });
         }

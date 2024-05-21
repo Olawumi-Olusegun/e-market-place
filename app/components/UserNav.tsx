@@ -41,6 +41,12 @@ const UserNav = ({name, email, image}: UserNavProps) => {
                 <DropdownMenuItem asChild className='cursor-pointer'>
                     <Link href={"/settings"}>Settings</Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild className='cursor-pointer'>
+                    <Link href={"/my-products"}>My Products</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className='cursor-pointer'>
+                    <Link href={"/billing"}>Billing</Link>
+                </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem className='cursor-pointer' asChild>

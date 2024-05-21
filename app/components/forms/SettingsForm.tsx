@@ -4,8 +4,8 @@ import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from 
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import React, { useEffect } from 'react'
-import SubmitButton from './SubmitButton';
-import { State, UpdateUserSettings } from '../lib/actions/user';
+import SubmitButton from '../SubmitButton';
+import { State, UpdateUserSettings } from '../../lib/actions/user';
 import { useFormState } from 'react-dom';
 import { toast } from 'sonner';
 

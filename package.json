@@ -31,12 +31,14 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.4",
     "sonner": "^1.4.41",
+    "stripe": "^15.7.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "uploadthing": "^6.10.4",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20",
     "@types/react": "^18",

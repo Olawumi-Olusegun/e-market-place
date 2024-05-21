@@ -18,7 +18,7 @@ async function Navbar({}: Props) {
     const user = await getUser();
 
   return (
-    <header className='w-screen border-b'>
+    <header className='w-full border-b'>
         <nav className='relative max-w-7xl w-full flex items-center md:grid md:grid-cols-12 px-4 md:px-8 mx-auto py-5'>
             <div className='md:col-span-3'>
                 <Link href={"/"} className='inline-block'>

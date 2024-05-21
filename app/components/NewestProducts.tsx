@@ -33,13 +33,13 @@ async function NewestProducts({}: Props) {
   return (
     <section className='mt-12'>
         <div className="md:flex md:items-center md:justify-between">
-            <h1 className='text-2xl font-extrabold tracking-tighter '>Newest Products</h1>
+            <h1 className='text-2xl font-extrabold tracking-tighter my-5 '>Newest Products</h1>
             <Link href={"/"} className='hidden text-sm font-medium text-primary hover:text-primary/90 md:flex items-center gap-2'>
                 <span>All Product</span>
                 <MoveRight className='w-4' />
             </Link>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {data.map((product) => (
                 <ProductCard 
                  key={product.id}

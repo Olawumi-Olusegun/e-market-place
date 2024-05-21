@@ -23,3 +23,14 @@ function SubmitButton({className, title, ...props}: SubmitButtonProps) {
 }
 
 export default SubmitButton
+
+
+export function BuyButton({price}: {price: number}) {
+  const {pending} = useFormStatus();
+  return (
+    <Button disabled={pending} type={pending ? "button" : "submit"}  className='w-full my-10 flex items-center'>
+        {pending && <Loader className='w-4 h-4 mr-2 animate-spin' />}
+        <span> {pending ? "Please wait..." : `Buy for NGN${price}` }</span>
+    </Button>
+  )
+}
